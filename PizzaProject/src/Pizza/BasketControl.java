@@ -11,6 +11,8 @@ import org.apache.commons.dbcp2.BasicDataSource;
 
 class BasketControl {
 	Calendar date;	
+	int day;
+	int index = 1;
 		
 	ArrayList<Food> food = new ArrayList<Food>(); //음식 안에있는 정보들을 들고온다.
 	PizzaPickControl ppc = new PizzaPickControl();
@@ -49,9 +51,14 @@ class BasketControl {
 	
 	//음식을  관리자에게 넘겨줘야한다.(DB)
 	public void PayForBasket(int choice) {
+		if(day != date.get(Calendar.DAY_OF_MONTH)) {
+			index = 1;
+		}
+		
+		
 		date = Calendar.getInstance();
 		int month = date.get(Calendar.MONTH);
-		int day = date.get(Calendar.DAY_OF_MONTH);
+		day = date.get(Calendar.DAY_OF_MONTH);
 		int hour = date.get(Calendar.HOUR);
 		int min = date.get(Calendar.MINUTE);
 		String strMonth, strDay, strHour, strMin ; 
@@ -73,18 +80,22 @@ class BasketControl {
 		//기본 값인 X로 무조건 다 저장하고, UI에서 배송완료 버튼을 이벤트로 지정
 		//이벤트 발생시 O로 수정한다는 메소드를 추가 작성하면 될 듯.
 		
+		int price = ppc.PickPizzaInfo(choice).getPrice();
+						
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "insert into orderCheck values(?,?,?,?)";
-		//orderCheck 라는 Table이 있다는 가정하에 작성.
+		String sql = "insert into orderCheck values(?,?,?,?,?,?)";
+		//orderCheck 라는 Table이 있다는 가정하에 작성.				
 		
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, Time);
-			pstmt.setString(2, PizzaName);
-			pstmt.setString(3, Address);
-			pstmt.setString(4, delCheck);
+			pstmt.setInt(1, index);
+			pstmt.setString(2, Time);
+			pstmt.setString(3, PizzaName);
+			pstmt.setString(4, Address);
+			pstmt.setString(5, delCheck);
+			pstmt.setInt(6, price);
 			
 			int result = pstmt.executeUpdate();
 			
@@ -100,7 +111,7 @@ class BasketControl {
             catch (SQLException e) {
                System.out.println(e.getMessage());
             }
-		}	
+		}index++;
 	
 	}
 }
