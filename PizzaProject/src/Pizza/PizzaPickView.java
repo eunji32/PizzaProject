@@ -126,7 +126,7 @@ class PizzaPickView extends JFrame {
 		setSize(400,700); 
 		setBackground(Color.black);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //화면상에 안보임
-		setVisible(true); //화면상에 구현	
+		setVisible(true); //화면상에 구현
 		
 	}	
 	

@@ -3,25 +3,41 @@ package Pizza;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-class FirstUI extends JFrame{
-BorderLayout border = new BorderLayout();
+
+
+
+
+class FirstUI extends JFrame implements ActionListener{
+	PizzaPickView pzview = new PizzaPickView();
+	BorderLayout border = new BorderLayout();
+	JButton button;
+	Container container;
+	
+	
+	
+
 	
 	FirstUI(){
 		// 패널이미지
+		
 		this.getContentPane().setBackground(Color.white); // 프레임 배경색 지정
 		ImageIcon main1 = new ImageIcon("./images/main1.jpg");	
 		ImageIcon icon1 = new ImageIcon("./images/icon1.jpg");			
 		ImageIcon main2 = new ImageIcon("./images/main2.jpg");			
 		ImageIcon order = new ImageIcon("./images/order.jpg");			
 
-		Container container = getContentPane();
+		container = getContentPane();
 		container.setLayout(null);
+		
+		
 		
 		JLabel label = new JLabel(main1);
 		label.setBounds(0,70,main1.getIconWidth(),main1.getIconHeight());
@@ -34,10 +50,11 @@ BorderLayout border = new BorderLayout();
 		//hhh
 		int width = 400;
 		int height = 700;
-		 JButton button = new JButton(order);
+		 button = new JButton(order);
 		 button.setBounds(100, 430,order.getIconWidth(),order.getIconHeight());
 		 button.setContentAreaFilled(false);
 		 button.setBorderPainted(false);
+		 button.addActionListener(this);
 		 
 		 container.add(label);
 		 container.add(lab1);
@@ -55,4 +72,22 @@ BorderLayout border = new BorderLayout();
 		setVisible(true);		
 		
 	}
+
+
+
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+		
+		new PizzaPickView();
+		
+	}
+
+
+	
+	
+	
 }
