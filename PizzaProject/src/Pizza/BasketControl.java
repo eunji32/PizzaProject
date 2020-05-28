@@ -1,10 +1,17 @@
 package Pizza;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Iterator;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
 class BasketControl {
+	Calendar date;	
+		
 	ArrayList<Food> food = new ArrayList<Food>(); //음식 안에있는 정보들을 들고온다.
 	PizzaPickControl ppc = new PizzaPickControl();
 	
@@ -41,7 +48,59 @@ class BasketControl {
 	}
 	
 	//음식을  관리자에게 넘겨줘야한다.(DB)
-	public void PayForBasket() {
+	public void PayForBasket(int choice) {
+		date = Calendar.getInstance();
+		int month = date.get(Calendar.MONTH);
+		int day = date.get(Calendar.DAY_OF_MONTH);
+		int hour = date.get(Calendar.HOUR);
+		int min = date.get(Calendar.MINUTE);
+		String strMonth, strDay, strHour, strMin ; 
+		strMonth = Integer.toString(month);
+		strDay = Integer.toString(day);
+		strHour = Integer.toString(hour);
+		strMin = Integer.toString(min);
 		
+		String Time = strMonth+"/"+strDay+" "+strHour+":"+strMin; 
+		//DB에 저장할 시간( MM/DD HH:MM)형태
+		
+		String PizzaName = ppc.PickPizzaInfo(choice).getName();
+		//DB에 저장할 피자이름
+		
+		String Address =null;
+		//DB에 저장할 배송지 이름 -> 메소드 구현시 수정필요
+		
+		String delCheck ="X";
+		//기본 값인 X로 무조건 다 저장하고, UI에서 배송완료 버튼을 이벤트로 지정
+		//이벤트 발생시 O로 수정한다는 메소드를 추가 작성하면 될 듯.
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "insert into orderCheck values(?,?,?,?)";
+		//orderCheck 라는 Table이 있다는 가정하에 작성.
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, Time);
+			pstmt.setString(2, PizzaName);
+			pstmt.setString(3, Address);
+			pstmt.setString(4, delCheck);
+			
+			int result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+	         
+            try {
+            	if(pstmt!=null) {pstmt.close();}
+            	if(conn!=null){conn.close();} 
+            }
+            catch (SQLException e) {
+               System.out.println(e.getMessage());
+            }
+		}	
+	
 	}
 }
