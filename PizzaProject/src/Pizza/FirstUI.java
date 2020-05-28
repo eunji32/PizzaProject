@@ -16,10 +16,10 @@ import javax.swing.JLabel;
 
 
 class FirstUI extends JFrame implements ActionListener{
-	PizzaPickView pzview = new PizzaPickView();
+//	PizzaPickView pzview = new PizzaPickView();
 	BorderLayout border = new BorderLayout();
 	JButton button;
-	Container container;
+//	Container container;
 	
 	
 	
@@ -34,7 +34,7 @@ class FirstUI extends JFrame implements ActionListener{
 		ImageIcon main2 = new ImageIcon("./images/main2.jpg");			
 		ImageIcon order = new ImageIcon("./images/order.jpg");			
 
-		container = getContentPane();
+		Container container = getContentPane();
 		container.setLayout(null);
 		
 		
@@ -83,6 +83,8 @@ class FirstUI extends JFrame implements ActionListener{
 		
 		
 		new PizzaPickView();
+		this.dispose();
+		
 		
 	}
 
