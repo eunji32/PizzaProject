@@ -25,14 +25,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-class PizzaPickView extends JFrame implements MouseListener{
+class PizzaPickUI extends JFrame implements MouseListener{
 	PizzaPickControl ppc = new PizzaPickControl(); //여기에 있는 피자정보를 장바구니에 꼭 넘겨줘야함
 	JButton pizza1;
 	JButton pizza2;
 	JButton pizza3;
 	JButton pizza4;
 	
-	PizzaPickView(){
+	PizzaPickUI(){
 		Container container = getContentPane();	
 		container.setLayout(new BorderLayout());
 		

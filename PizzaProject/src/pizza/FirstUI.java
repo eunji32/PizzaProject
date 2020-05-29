@@ -82,7 +82,7 @@ class FirstUI extends JFrame implements ActionListener{
 		// TODO Auto-generated method stub
 		
 		
-		new PizzaPickView();
+		new PizzaPickUI();
 		this.dispose();
 		
 		
