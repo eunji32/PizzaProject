@@ -27,8 +27,8 @@ class BasketControl {
 	
 	
 	//가져온 피자의 정보를 입력
-	public void inputFood(int choice) {
-		food.add(ppc.PickPizzaInfo(choice)); //피자의 정보를 입력
+	public void inputFood() {
+		food.add(ppc.PickPizzaInfo()); //피자의 정보를 입력
 	}
 	
 	
