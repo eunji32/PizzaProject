@@ -1,4 +1,4 @@
-package Pizza;
+package pizza;
 
 class Food {
 	private int category = 0; //피자 1, 사이드2, 음료3

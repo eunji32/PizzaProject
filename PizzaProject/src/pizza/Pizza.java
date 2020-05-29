@@ -1,4 +1,4 @@
-package Pizza;
+package pizza;
 
 class Pizza extends Food{
 	private String size;

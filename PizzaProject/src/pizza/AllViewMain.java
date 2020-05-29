@@ -1,4 +1,4 @@
-package Pizza;
+package pizza;
 
 public class AllViewMain {
 	public static void main(String[] args) {
