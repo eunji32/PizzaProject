@@ -170,8 +170,9 @@ class PizzaPickUI extends JFrame implements MouseListener{
 //			System.out.println(getPickPizza(3).getName());
 		}
 		
-		getPickPizza();//피자값 리턴하는 메서드 생성
+		//피자값 리턴하는 메서드 생성
 		
+		new BasketUI(ppc);
 		//새로운 프레임 받아오기 new~ 
 		this.dispose();//현재창 닫기
 		
@@ -179,10 +180,10 @@ class PizzaPickUI extends JFrame implements MouseListener{
 		
 	}
 	
-	public Pizza getPickPizza() {
-		
-		return ppc.PickPizzaInfo();
-	}
+//	public Pizza getPickPizza() {
+//		
+//		return ppc.PickPizzaInfo();
+//	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
