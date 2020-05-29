@@ -15,7 +15,7 @@ class BasketControl {
 	private String userid = "scott";
 	private String passwd = "tiger";
 	
-	BasketControl() {
+	BasketControl(PizzaPickControl ppc) {
 		ds = new BasicDataSource(); //Connection Pool 기능과 Thread-safe 기능을 갖춤.
 		ds.setDriverClassName(driver);
 		ds.setUrl(url);
