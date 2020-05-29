@@ -172,7 +172,7 @@ class PizzaPickView extends JFrame implements MouseListener{
 		getPickPizza();//피자값 리턴하는 메서드 생성
 		
 		//새로운 프레임 받아오기 new~ 
-		this.dispose();//현재창 닫
+		this.dispose();//현재창 닫기
 		
 		
 		
