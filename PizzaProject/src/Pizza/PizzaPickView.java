@@ -145,6 +145,7 @@ class PizzaPickView extends JFrame implements MouseListener{
 		setTitle("도미노 메뉴선택");
 		setSize(400,700); 
 		setBackground(Color.black);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //화면상에 안보임
 		setVisible(true); //화면상에 구현
 		
