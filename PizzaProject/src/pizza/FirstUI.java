@@ -64,7 +64,7 @@ class FirstUI extends JFrame implements ActionListener{
 	
 		
 		// 컨테이너 
-		setTitle("도미노 피자 메인");
+		setTitle("피 자");
 		setSize(400,700); 
 		setResizable(false);//창의 크기를 변경하지 못하게
 		setLocationRelativeTo(null);//창이 가운데 나오게

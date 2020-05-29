@@ -21,23 +21,17 @@ class BasketUI extends JFrame implements MouseListener{
 	      bc = new BasketControl(ppc); //컨트롤러에서도 사용할수있게한다.
 	      
 	      Container container = getContentPane();
-//	      JLabel na = new JLabel(ppc.PickPizzaInfo().getName());
 	      
-	      //임시 버튼 생성
+	      //임시 버튼 생성 /나중에 삭제할거
 	      JButton na2 = new JButton(ppc.PickPizzaInfo().getName());
 	      
-	 
-	      
-	      
 	      container.setLayout(new FlowLayout());
-	      
 	      
 	      //임시 버튼 실행
 	      container.add(na2);
 	      na2.addMouseListener(this);
 	      
-	      
-	      setTitle("도미노 피자 메인");
+	      setTitle("주문내역 확인");
 	      setSize(400,700); 
 	      setResizable(false);//창의 크기를 변경하지 못하게
 	      setLocationRelativeTo(null);//창이 가운데 나오게

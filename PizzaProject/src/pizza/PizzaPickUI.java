@@ -142,7 +142,7 @@ class PizzaPickUI extends JFrame implements MouseListener{
 		pizza4.addMouseListener(this);
 
 
-		setTitle("도미노 메뉴선택");
+		setTitle("메뉴 선택");
 		setSize(400,700); 
 		setBackground(Color.black);
 		setLocationRelativeTo(null);
@@ -156,35 +156,23 @@ class PizzaPickUI extends JFrame implements MouseListener{
 	public void mouseClicked(MouseEvent e) {//화면 넘기는 액션 메서드
 		if(e.getSource() == pizza1) {
 			ppc.setChoice(0);
-//			System.out.println(getPickPizza(0).getName());
 		}else if(e.getSource() == pizza2) {
 			ppc.setChoice(1);
-//			System.out.println(getPickPizza(1).getName());
 		}
 		else if(e.getSource() == pizza3) {
 			ppc.setChoice(2);
-//			System.out.println(getPickPizza(2).getName());
 		}
 		else if(e.getSource() == pizza4) {
 			ppc.setChoice(3);
-//			System.out.println(getPickPizza(3).getName());
 		}
-		
-		//피자값 리턴하는 메서드 생성
-		
+
+		//피자 선택 후 BasketUI 에 담기게 선언
 		new BasketUI(ppc);
 
 		this.dispose();//현재창 닫기
 		
-		
-		
 	}
 	
-//	public Pizza getPickPizza() {
-//		
-//		return ppc.PickPizzaInfo();
-//	}
-
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		
