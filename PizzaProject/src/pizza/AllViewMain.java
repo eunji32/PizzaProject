@@ -7,9 +7,9 @@ public class AllViewMain {
 //		System.out.println("실행");
 
 		
-		new FirstUI();
+//		new FirstUI();
 		
-//		new LastUI();
+		new LastUI();
 		
 		
 		

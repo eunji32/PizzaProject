@@ -24,7 +24,7 @@ class LastUI extends JFrame implements MouseListener{
 		ImageIcon logo = new ImageIcon("./images/logo.jpg");
 		ImageIcon lastimage = new ImageIcon("./images/lastimage.jpg");
 		ImageIcon backicon = new ImageIcon("./images/backicon.jpg");
-		ImageIcon endicon = new ImageIcon("./images/endicon.jpg");
+		ImageIcon endicon = new ImageIcon("./images/endicon.png");
 		
 		Container container = getContentPane();
 		container.setLayout(null);
@@ -46,17 +46,18 @@ class LastUI extends JFrame implements MouseListener{
 		
 		// 종료버튼
 		endButton = new JButton(endicon);
-		endButton.setBounds(106, 434, endicon.getIconWidth(), endicon.getIconHeight());
-		endButton.setContentAreaFilled(false);
-		endButton.setBorderPainted(false);
+		endButton.setBounds(106, 394, endicon.getIconWidth(), endicon.getIconHeight());
+//		endButton.setContentAreaFilled(false);
+//		endButton.setBorderPainted(true);
 		endButton.addMouseListener(this);
+		//106.394
 		
 		
+		container.add(endButton);
 		container.add(lab1);
 		container.add(lab2);
 		container.add(backbutton);
-		container.add(endButton);
-		
+//		lab2.add(endButton);
 		
 		
 		// 컨테이너 
@@ -73,7 +74,7 @@ class LastUI extends JFrame implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
-		if (e.getSource() == endButton) {
+		if (e.getSource() == backbutton) {
 			new FirstUI();
 			this.dispose();
 		}
