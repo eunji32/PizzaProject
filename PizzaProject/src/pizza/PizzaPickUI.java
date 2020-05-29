@@ -173,7 +173,7 @@ class PizzaPickUI extends JFrame implements MouseListener{
 		//피자값 리턴하는 메서드 생성
 		
 		new BasketUI(ppc);
-		//새로운 프레임 받아오기 new~ 
+
 		this.dispose();//현재창 닫기
 		
 		
