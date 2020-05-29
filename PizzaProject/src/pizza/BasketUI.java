@@ -22,6 +22,8 @@ class BasketUI extends JFrame implements MouseListener{
 	      
 	      Container container = getContentPane();
 //	      JLabel na = new JLabel(ppc.PickPizzaInfo().getName());
+	      
+	      //임시 버튼 생성
 	      JButton na2 = new JButton(ppc.PickPizzaInfo().getName());
 	      
 	 
@@ -29,6 +31,8 @@ class BasketUI extends JFrame implements MouseListener{
 	      
 	      container.setLayout(new FlowLayout());
 	      
+	      
+	      //임시 버튼 실행
 	      container.add(na2);
 	      na2.addMouseListener(this);
 	      

@@ -6,7 +6,7 @@ import org.apache.commons.dbcp2.BasicDataSource;
 
 class BasketControl {
 	ArrayList<Food> food = new ArrayList<Food>(); //음식 안에있는 정보들을 들고온다.
-	PizzaPickControl ppc = new PizzaPickControl();
+	PizzaPickControl ppc;
 	
 	BasicDataSource ds;
 	
@@ -23,12 +23,13 @@ class BasketControl {
 		ds.setPassword(passwd);
 		
 		ds.setInitialSize(5); // 5개의 Connection을 공유하면서 사용할 수 있음. /5개까지 미리 만들어 놓는것 5명이 넘으면 new해서 새로 만듦.
+		this.ppc = ppc;
 	}
 	
 	
 	//가져온 피자의 정보를 입력
-	public void inputFood() {
-		food.add(ppc.PickPizzaInfo()); //피자의 정보를 입력
+	public void inputPizza() {
+		food.add(ppc.PickPizzaInfo());
 	}
 	
 	
