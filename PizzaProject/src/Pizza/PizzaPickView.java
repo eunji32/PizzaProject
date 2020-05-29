@@ -6,9 +6,18 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -137,7 +146,7 @@ class PizzaPickView extends JFrame implements MouseListener{
 		setSize(400,700); 
 		setBackground(Color.black);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //화면상에 안보임
-		setVisible(true); //화면상에 구현	
+		setVisible(true); //화면상에 구현
 		
 	}
 	
