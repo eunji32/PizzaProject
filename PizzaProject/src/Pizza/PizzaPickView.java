@@ -144,7 +144,6 @@ class PizzaPickView extends JFrame implements MouseListener{
 	//선택시 주소값을 넘겨줘서 푸드에 넣어주는 형식
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		System.out.println("hi");
 		if(e.getSource() == pizza1) {
 			ppc.setChoice(0);
 		}else if(e.getSource() == pizza2) {
