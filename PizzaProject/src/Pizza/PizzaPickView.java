@@ -1,12 +1,29 @@
 package Pizza;
 
-import java.util.ArrayList;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-class PizzaPickView extends JFrame {
-	PizzaPickControl ppc = new PizzaPickControl();
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+class PizzaPickView extends JFrame implements MouseListener{
+	PizzaPickControl ppc = new PizzaPickControl(); //여기에 있는 피자정보를 장바구니에 꼭 넘겨줘야함
+	JButton pizza1;
+	JButton pizza2;
+	JButton pizza3;
+	JButton pizza4;
 	
 	PizzaPickView(){
-		
 		Container container = getContentPane();	
 		container.setLayout(new BorderLayout());
 		
@@ -35,7 +52,7 @@ class PizzaPickView extends JFrame {
 		ImageIcon topten = new ImageIcon("./images/topten.png");
 		ImageIcon toptenb = new ImageIcon("./images/topten2.png");
 		ImageIcon toptenc = new ImageIcon("./images/topten2.png");
-		JButton pizza1 = new JButton(topten);
+		pizza1 = new JButton(topten);
 		pizza1.setBorderPainted(false);
 		pizza1.setContentAreaFilled(false);
 		pizza1.setFocusPainted(false);
@@ -47,7 +64,7 @@ class PizzaPickView extends JFrame {
 		ImageIcon meat = new ImageIcon("./images/meat.png");
 		ImageIcon meatb = new ImageIcon("./images/meat2.png");
 		ImageIcon meatc = new ImageIcon("./images/meat3.png");
-		JButton pizza2 = new JButton(meat);
+		pizza2 = new JButton(meat);
 		pizza2.setBorderPainted(false);
 		pizza2.setContentAreaFilled(false);
 		pizza2.setFocusPainted(false);
@@ -60,7 +77,7 @@ class PizzaPickView extends JFrame {
 		ImageIcon steak = new ImageIcon("./images/steak.png");
 		ImageIcon steakb = new ImageIcon("./images/steak2.png");
 		ImageIcon steakc = new ImageIcon("./images/steak2.png");
-		JButton pizza3 = new JButton(steak);
+		pizza3 = new JButton(steak);
 		pizza3.setBorderPainted(false);
 		pizza3.setContentAreaFilled(false);
 		pizza3.setFocusPainted(false);
@@ -72,7 +89,7 @@ class PizzaPickView extends JFrame {
 		ImageIcon shrim = new ImageIcon("./images/shrim.png");
 		ImageIcon shrimb = new ImageIcon("./images/shrim2.png");
 		ImageIcon shrimc = new ImageIcon("./images/shrim2.png");
-		JButton pizza4 = new JButton(shrim);
+		pizza4 = new JButton(shrim);
 		pizza4.setBorderPainted(false);
 		pizza4.setContentAreaFilled(false);
 		pizza4.setFocusPainted(false);
@@ -109,6 +126,11 @@ class PizzaPickView extends JFrame {
 		container.add(jp3, BorderLayout.SOUTH);
 		container.add(jp4, BorderLayout.WEST);
 		container.add(jp5, BorderLayout.EAST);
+		
+		pizza1.addMouseListener(this);
+		pizza2.addMouseListener(this);
+		pizza3.addMouseListener(this);
+		pizza4.addMouseListener(this);
 
 
 		setTitle("도미노 메뉴선택");
@@ -116,6 +138,51 @@ class PizzaPickView extends JFrame {
 		setBackground(Color.black);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //화면상에 안보임
 		setVisible(true); //화면상에 구현	
+		
+	}
+	
+	//선택시 주소값을 넘겨줘서 푸드에 넣어주는 형식
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		System.out.println("hi");
+		if(e.getSource() == pizza1) {
+			ppc.setChoice(0);
+		}else if(e.getSource() == pizza2) {
+			ppc.setChoice(1);
+		}
+		else if(e.getSource() == pizza3) {
+			ppc.setChoice(2);
+		}
+		else if(e.getSource() == pizza4) {
+			ppc.setChoice(3);
+		}
+		
+		//화면 넘기는 메소드
+		System.out.println(getPickPizza().getName());
+	}
+	
+	public Pizza getPickPizza() {
+		
+		return ppc.PickPizzaInfo();
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
 		
 	}	
 	
