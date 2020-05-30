@@ -5,6 +5,9 @@ public class AllViewMain {
 
 		new FirstUI();
 		
+//		new PizzaView();
+		
+//		new PizzaPickView();
 		
 		
 		 /************TEAM************
