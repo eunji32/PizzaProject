@@ -159,7 +159,7 @@ class PizzaPickUI extends JFrame implements MouseListener{
 
 		//피자 선택 후 BasketUI 에 담기게 선언
 //		new BasketUI(ppc);
-		new PizzaView(ppc,pizzaIcon);
+		new BasketUI(ppc,pizzaIcon);
 
 		this.dispose();//현재창 닫기
 		

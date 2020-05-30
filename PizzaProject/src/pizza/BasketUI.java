@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.*;
 
-class PizzaView extends JFrame implements MouseListener,ActionListener, ItemListener{
+class BasketUI extends JFrame implements MouseListener,ActionListener, ItemListener{
    
 	Image background;//배경이미지
 	  
@@ -29,11 +29,12 @@ class PizzaView extends JFrame implements MouseListener,ActionListener, ItemList
 	JTextArea finalorder;
 	JLabel pname;
 	JTextArea tesTextArea;
+	JButton backButton;
 
 	private Integer one;
 	
 	
-   PizzaView(PizzaPickControl ppc,Icon pui){
+	BasketUI(PizzaPickControl ppc,Icon pui){
 	   this.pui =pui;
 	   this.ppc=ppc;
 	   bc=new BasketControl(ppc);
@@ -177,7 +178,12 @@ class PizzaView extends JFrame implements MouseListener,ActionListener, ItemList
 		
 	   //최종 결제 금액
 		
-		
+		//뒤로가기 버튼
+		backButton = new JButton();
+		backButton.setBounds(0,0,80,30);
+		backButton.setText("BACK");
+		backButton.addMouseListener(this);
+		container.add(backButton);
 	
 	   //다음 단계
 	   JButton nextb = new JButton(new ImageIcon("./images/next.png"));
@@ -242,6 +248,10 @@ public void itemStateChanged(ItemEvent e) {
 @Override
 public void mouseClicked(MouseEvent e) {
 	// TODO Auto-generated method stub
+	if (e.getSource() ==backButton) {
+		this.dispose();
+		new PizzaPickUI();
+	}
 	
 }
 
@@ -254,7 +264,7 @@ public void mousePressed(MouseEvent e) {
 @Override
 public void mouseReleased(MouseEvent e) {
 	// TODO Auto-generated method stub
-	System.err.println("oooo!!");
+	
 }
 
 @Override
