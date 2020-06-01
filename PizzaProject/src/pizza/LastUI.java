@@ -30,7 +30,7 @@ class LastUI extends JFrame implements MouseListener{
 		container.setLayout(null);
 		
 		JLabel lab1 = new JLabel(logo);
-		lab1.setBounds(90,45,logo.getIconWidth(),logo.getIconHeight());
+		lab1.setBounds(0,0,logo.getIconWidth(),logo.getIconHeight());
 		JLabel lab2 = new JLabel(lastimage);
 		lab2.setBounds(50,115,lastimage.getIconWidth(),lastimage.getIconHeight());
 		

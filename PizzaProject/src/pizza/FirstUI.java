@@ -53,7 +53,7 @@ class FirstUI extends JFrame implements ActionListener{
 		int height = 700;
 		 button = new JButton(order);
 		 button.setBounds(100, 430,order.getIconWidth(),order.getIconHeight());
-		 button.setContentAreaFilled(false);
+//		 button.setContentAreaFilled(false);
 		 button.setBorderPainted(false);
 		 button.addActionListener(this);
 		 
