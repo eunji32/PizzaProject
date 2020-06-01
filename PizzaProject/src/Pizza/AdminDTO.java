@@ -1,28 +1,28 @@
 package Pizza;
 
 public class AdminDTO {
-	private int index;
-	private String Time;
+	private int indexi;
+	private String Timei;
 	private String PizzaName;
 	private String Address;
 	private String delCheck;
 	private int price;
 
 
-	public int getindex() {
-		return index;
+	public int getindexi() {
+		return indexi;
 	}
 	
-	public void setindex(int index) {
-		this.index = index	;
+	public void setindexi(int indexi) {
+		this.indexi = indexi	;
 	}
 	
-	public String getTime() {
-		return Time;
+	public String getTimei() {
+		return Timei;
 	}
 	
-	public void setTime(String Time) {
-		this.Time = Time	;
+	public void setTimei(String Timei) {
+		this.Timei = Timei	;
 	}
 	
 	public String getPizzaName() {
@@ -57,4 +57,3 @@ public class AdminDTO {
 		this.price = price	;
 	}
 }
-

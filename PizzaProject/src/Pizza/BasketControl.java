@@ -12,7 +12,7 @@ import org.apache.commons.dbcp2.BasicDataSource;
 class BasketControl {
 	Calendar date;	
 	int day;
-	int index = 1;
+	static int indexi =1;
 		
 	ArrayList<Food> food = new ArrayList<Food>(); //음식 안에있는 정보들을 들고온다.
 	PizzaPickControl ppc = new PizzaPickControl();
@@ -51,9 +51,11 @@ class BasketControl {
 	
 	//음식을  관리자에게 넘겨줘야한다.(DB)
 	public void PayForBasket(int choice) {
-		if(day != date.get(Calendar.DAY_OF_MONTH)) {
-			index = 1;
-		}
+//		if(day != date.get(Calendar.DAY_OF_MONTH)) {
+//			indexi = 1;
+//		}
+		
+		
 		
 		
 		date = Calendar.getInstance();
@@ -67,11 +69,12 @@ class BasketControl {
 		strHour = Integer.toString(hour);
 		strMin = Integer.toString(min);
 		
-		String Time = strMonth+"/"+strDay+" "+strHour+":"+strMin; 
+		String Timei = strMonth+"/"+strDay+" "+strHour+":"+strMin; 
 		//DB에 저장할 시간( MM/DD HH:MM)형태
 		
-		String PizzaName = ppc.PickPizzaInfo(choice).getName();
+//		String PizzaName = ppc.PickPizzaInfo(choice).getName();
 		//DB에 저장할 피자이름
+		String PizzaName = "testPizza"+choice;
 		
 		String Address =null;
 		//DB에 저장할 배송지 이름 -> 메소드 구현시 수정필요
@@ -80,25 +83,31 @@ class BasketControl {
 		//기본 값인 X로 무조건 다 저장하고, UI에서 배송완료 버튼을 이벤트로 지정
 		//이벤트 발생시 O로 수정한다는 메소드를 추가 작성하면 될 듯.
 		
-		int price = ppc.PickPizzaInfo(choice).getPrice();
-						
+//		int price = ppc.PickPizzaInfo(choice).getPrice();
+		int price	= 10000*choice;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "insert into orderCheck values(?,?,?,?,?,?)";
+		String sql = "insert into orderCheck values(orderCheck_seq.nextVal,?,?,?,?,?)";
 		//orderCheck 라는 Table이 있다는 가정하에 작성.				
 		
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, index);
-			pstmt.setString(2, Time);
-			pstmt.setString(3, PizzaName);
-			pstmt.setString(4, Address);
-			pstmt.setString(5, delCheck);
-			pstmt.setInt(6, price);
+//			pstmt.setString(1, "orderCheck_seq.nextVal");
+			pstmt.setString(1, Timei);
+			pstmt.setString(2, PizzaName);
+			pstmt.setString(3, Address);
+			pstmt.setString(4, delCheck);
+			pstmt.setInt(5, price);
 			
 			int result = pstmt.executeUpdate();
 			
+			if(result ==1) {
+				System.out.println("저장성공");
+				indexi++;
+			}else {
+				System.out.println("저장실패");
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -111,7 +120,7 @@ class BasketControl {
             catch (SQLException e) {
                System.out.println(e.getMessage());
             }
-		}index++;
+		}
 	
 	}
 }

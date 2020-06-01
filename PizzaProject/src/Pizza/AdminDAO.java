@@ -1,7 +1,6 @@
 package Pizza;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,26 +31,29 @@ class AdminDAO {
 		 PreparedStatement pstmt=null;
 		 Connection conn= null;
 		 ResultSet rs = null;
-		 String sql = "select * from orderCheck where index =+"+ i;
+		 String sql = "select * from orderCheck where indexi = ?";
 		 ArrayList<AdminDTO> list = new ArrayList<AdminDTO>();
 		
 		 try {
 		conn = ds.getConnection();
-
+		
+		
 		pstmt =conn.prepareStatement(sql);
+		pstmt.setInt(1, i);
+		
 		rs = pstmt.executeQuery();
 		
        
        		AdminDTO dto = new AdminDTO();
-      	 
-       		dto.setTime(rs.getString("Time"));
+       	while(rs.next()) {
+       		dto.setTimei(rs.getString("Timei"));
        		dto.setPizzaName(rs.getString("PizzaName"));
        		dto.setAddress(rs.getString("Address"));
        		dto.setdelCheck(rs.getString("delCheck"));
        		dto.setprice(rs.getInt("price"));
        		
        		list.add(dto);
-        // dto => DB시스템의 여러 기능을 사용할 수 있도록 최적화
+       	}
        	
 		} catch (SQLException e) {
 		e.printStackTrace();
@@ -59,7 +61,40 @@ class AdminDAO {
 		return list;
 	}
 	
+	public void update(AdminDTO dto) {
+		String sql = "update dept01 set delCheck = ? where indexi = ?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 	
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getdelCheck());
+			pstmt.setInt(2, dto.getindexi());
+			
+			pstmt.executeUpdate();
+			int result = pstmt.executeUpdate();
+			
+			if(result ==1) {
+				System.out.println("수정성공");
+				
+			}else {
+				System.out.println("수정실패");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+	         
+            try {
+               if(conn!=null){conn.close();} 
+               if(pstmt!=null) {pstmt.close();}
+            }
+            catch (SQLException e) {
+               System.out.println(e.getMessage());
+            }
+		}	
+	}
 }
 
 

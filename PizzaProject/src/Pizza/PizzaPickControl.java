@@ -6,7 +6,8 @@ class PizzaPickControl {
 	ArrayList<Pizza> pzList = new ArrayList<Pizza>(); //피자의 정보를 입력
 	
 	//피자 생성먼저하기
-	public void makePizzaList() {
+	public void makePizzaList()
+{
 		
 	}
 	
@@ -21,6 +22,7 @@ class PizzaPickControl {
 	public ArrayList<Pizza> PizzaInfo(){
 		return pzList;
 	}
+	
 	
 	
 }
