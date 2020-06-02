@@ -1,12 +1,14 @@
 package pizza;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+
 
 
 class AdminDAO {
@@ -18,14 +20,20 @@ class AdminDAO {
 	private String passwd = "tiger";
 	
 	AdminDAO (){
-		ds = new BasicDataSource();
-		//Connection Pool 기능과 Thread-safe 기능을 갖춤.
-		ds.setDriverClassName(driver);
-		ds.setUrl(url);
-		ds.setUsername(userid);
-		ds.setPassword(passwd);
-		
-		ds.setInitialSize(5);
+		try {
+			Class.forName(driver);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		ds = new BasicDataSource();
+//		//Connection Pool 기능과 Thread-safe 기능을 갖춤.
+//		ds.setDriverClassName(driver);
+//		ds.setUrl(url);
+//		ds.setUsername(userid);
+//		ds.setPassword(passwd);
+//		
+//		ds.setInitialSize(5);
 	}
 	public ArrayList<AdminDTO> select(int i) {
 		 PreparedStatement pstmt=null;
@@ -35,7 +43,8 @@ class AdminDAO {
 		 ArrayList<AdminDTO> list = new ArrayList<AdminDTO>();
 		
 		 try {
-		conn = ds.getConnection();
+		//conn = ds.getConnection();
+		conn = DriverManager.getConnection(url, userid, passwd);
 		
 		
 		pstmt =conn.prepareStatement(sql);
@@ -61,16 +70,18 @@ class AdminDAO {
 		return list;
 	}
 	
-	public void update(AdminDTO dto) {
-		String sql = "update dept01 set delCheck = ? where indexi = ?";
+	public void update(AdminDTO dto, int indexi) {
+		String sql = "update orderCheck set delCheck = ? where indexi = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 	
 		try {
-			conn = ds.getConnection();
+			//conn = ds.getConnection();
+			conn = DriverManager.getConnection(url, userid, passwd);
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, dto.getdelCheck());
-			pstmt.setInt(2, dto.getindexi());
+			
+			pstmt.setString(1, "O");
+			pstmt.setInt(2, indexi+1);
 			
 			pstmt.executeUpdate();
 			int result = pstmt.executeUpdate();
@@ -95,6 +106,37 @@ class AdminDAO {
             }
 		}	
 	}
+
+	
+	public ArrayList<AdminDTO> selectMax() {
+		 int t=0;
+		PreparedStatement pstmt=null;
+		 Connection conn= null;
+		 ResultSet rs = null;
+		 String sql = "select max(indexi) \"indexi\" from orderCheck;";
+		 ArrayList<AdminDTO> list = new ArrayList<AdminDTO>();
+		
+		 try {
+		conn = ds.getConnection();
+		
+		
+		pstmt =conn.prepareStatement(sql);
+			
+		rs = pstmt.executeQuery();
+		
+      
+      		AdminDTO dto = new AdminDTO();
+      	  	while(rs.next()) {
+      		t =rs.getInt("indexi");
+       		dto.setindexi(rs.getInt("indexi"));
+       		list.add(dto);
+           	}
+           	
+    		} catch (SQLException e) {
+    		e.printStackTrace();
+    		}
+    		return list;
+    	}
 }
 
 

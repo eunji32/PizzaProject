@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+
 class JButtonUI extends JFrame implements ActionListener{
 	JButton button1;
 	JButton button2;

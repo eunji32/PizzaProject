@@ -7,7 +7,8 @@ import javax.swing.JFrame;
 
 
 public class Admin {
-	BasketControl info = new BasketControl(null);
+	PizzaPickControl ppc = new PizzaPickControl();
+	BasketControl info = new BasketControl(ppc);
 	String ID ="admin";
 	String PW = "admin" ;
 	
