@@ -47,16 +47,20 @@ class OrderCheckUI extends JFrame implements ActionListener, MouseListener{
 				data[i] = admin1.OrderData(info, i+1);
 
 			}
-				
+			  JLabel domino = new JLabel(new ImageIcon("./images/logo.png"));
+		      domino.setBounds(450, 11,138,27);
+		      container.add(domino);
+		      
 				table1 = new JTable(data,colHeads);
 				JScrollPane jsp = new JScrollPane(table1);
 				label1.setBounds(250,10,100,38);
 				container.add(label1);
 				jsp.setBounds(20,61,560,230);
 				container.add(jsp);
-				back.setBounds(450,300,100,50);
+				back.setBounds(50,300,100,50);
 				container.add(back);
-				complete.setBounds(50,300,100,50);
+				complete.setBounds(450,300,100,50);
+
 				container.add(complete);
 				
 				setTitle("매출 현황");

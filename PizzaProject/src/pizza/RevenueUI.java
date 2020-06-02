@@ -38,6 +38,12 @@ class RevenueUI extends JFrame implements ActionListener{
 			data[i] = admin1.RevenueData(info, i+1);
 
 		}
+		
+		 JLabel domino = new JLabel(new ImageIcon("./images/logo.png"));
+	      domino.setBounds(450, 11,138,27);
+	      container.add(domino);
+		
+		
 			
 			JTable table1 = new JTable(data,colHeads);
 			JScrollPane jsp = new JScrollPane(table1);

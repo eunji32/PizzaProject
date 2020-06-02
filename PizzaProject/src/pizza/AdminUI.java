@@ -15,7 +15,7 @@ class JButtonUI extends JFrame implements ActionListener{
    JButton button1;
    JButton button2;
    JButton button3;
-   JLabel label1;
+   JLabel domino;
    
    JButtonUI(){
       this.getContentPane().setBackground(Color.white); // 프레임 배경색 지정
@@ -46,8 +46,8 @@ class JButtonUI extends JFrame implements ActionListener{
       button2.addActionListener(this);
 
 
-      label1 = new JLabel(new ImageIcon("./images/logo2.png"));
-      label1.setBounds(173, 615,50,50);
+      domino = new JLabel(new ImageIcon("./images/logo2.png"));
+      domino.setBounds(173, 615,50,50);
 //      label1.setBorderPainted(false);
 //      label1.setContentAreaFilled(false);
 //      label1.setFocusPainted(false);
@@ -55,7 +55,7 @@ class JButtonUI extends JFrame implements ActionListener{
       
       container.add(button1);
       container.add(button2);
-      container.add(label1);
+      container.add(domino);
       
       setTitle("관리자 화면");
       setSize(400,700); 
