@@ -5,6 +5,7 @@ import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,7 +24,7 @@ class RevenueUI extends JFrame implements ActionListener{
 		container.setLayout(null);
 		
 		JButton back = new JButton("돌아가기");
-		JLabel label1 = new JLabel("매출표");		
+		JLabel label1 = new JLabel(new ImageIcon("./images/mg3.png"));
 		String[] colHeads = {"시간", "피자", "매출액"};		
 		Object[][] data = new Object[20][3]; 
 		//10에 해당하는 배열에 대해서는 
@@ -38,7 +39,7 @@ class RevenueUI extends JFrame implements ActionListener{
 			
 			JTable table1 = new JTable(data,colHeads);
 			JScrollPane jsp = new JScrollPane(table1);
-			label1.setBounds(301,10,100,50);
+			label1.setBounds(245,10,100,38);
 			container.add(label1);
 			jsp.setBounds(20,61,560,230);
 			container.add(jsp);
