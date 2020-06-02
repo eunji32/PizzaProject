@@ -46,11 +46,12 @@ class yapp extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		String index = e.getActionCommand();
 		if(index.equals("예")) {
+			
 			this.dispose();
 			info.update(dto, C);
 			
 //			callindex.dispose();
-			new OrderCheckUI();
+			//new OrderCheckUI();
 		
 			
 		}else if(index.equals("아니오")) {			

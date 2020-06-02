@@ -21,6 +21,7 @@ class FirstUI extends JFrame implements ActionListener{
 	BorderLayout border = new BorderLayout();
 	JButton button;
 //	Container container;
+	JButton secertBu;
 	
 	
 	
@@ -38,7 +39,12 @@ class FirstUI extends JFrame implements ActionListener{
 		Container container = getContentPane();
 		container.setLayout(null);
 		
-		
+		secertBu = new JButton();
+		secertBu.setBounds(350, 620, 50, 50);
+		secertBu.setVisible(true);
+		secertBu.addActionListener(this);
+		secertBu.setBorderPainted(false);
+		secertBu.setBackground(new Color(255, 255, 255));
 		
 		JLabel label = new JLabel(main1);
 		label.setBounds(0,70,main1.getIconWidth(),main1.getIconHeight());
@@ -57,10 +63,12 @@ class FirstUI extends JFrame implements ActionListener{
 		 button.setBorderPainted(false);
 		 button.addActionListener(this);
 		 
+		 
 		 container.add(label);
 		 container.add(lab1);
 		 container.add(lab2);
 		 container.add(button);
+		 container.add(secertBu);
 	
 	
 		
@@ -81,10 +89,15 @@ class FirstUI extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		if(e.getSource().equals(secertBu)) {
+			this.dispose();
+			new ManagerLogin();
+		}else {
+			new PizzaPickUI();
+			this.dispose();
+		}
 		
 		
-		new PizzaPickUI();
-		this.dispose();
 		
 		
 	}
