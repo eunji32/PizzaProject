@@ -1,4 +1,4 @@
-package Pizza;
+package pizza;
 
 import java.util.ArrayList;
 
@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 
 
 public class Admin {
-	BasketControl info = new BasketControl();
+	BasketControl info = new BasketControl(null);
 	String ID ="admin";
 	String PW = "admin" ;
 	

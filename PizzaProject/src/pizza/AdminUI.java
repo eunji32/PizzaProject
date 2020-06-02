@@ -1,4 +1,4 @@
-package Pizza;
+package pizza;
 
 import java.awt.Color;
 import java.awt.Container;

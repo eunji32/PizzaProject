@@ -1,4 +1,4 @@
-package Pizza;
+package pizza;
 
 public class AdminDTO {
 	private int indexi;
