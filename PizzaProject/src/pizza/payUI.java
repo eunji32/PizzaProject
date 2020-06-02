@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,16 +29,6 @@ class payUI extends JFrame implements ActionListener,MouseListener{
 	JTextField name_t, number_t, address_t;
 	JTextArea jta; 
 	
-	//확인창
-	JLabel receiveName;
-	JLabel receiveNum;
-	JLabel receiveAddress;
-	
-	//카드
-	JRadioButton card;
-	JRadioButton cash;
-	JLabel howPay;
-	
 	
 	BasketUI basketUI;
 	PizzaPickUI pizzaPickUI;
@@ -47,13 +36,11 @@ class payUI extends JFrame implements ActionListener,MouseListener{
 	PizzaPickControl ppc;
 	BasketControl bc;
 	Icon pui;
-	int resultPrice;
 
-	payUI(PizzaPickControl ppc,Icon pui,BasketControl bc, int resultPrice){
+	payUI(PizzaPickControl ppc,Icon pui,BasketControl bc){
 		this.ppc = ppc;
 		this.pui = pui;
 		this.bc = bc;
-		this.resultPrice = resultPrice;
 		
 
 		
@@ -113,8 +100,8 @@ class payUI extends JFrame implements ActionListener,MouseListener{
 
 		
 		ButtonGroup bg = new ButtonGroup();
-		card = new JRadioButton("신용카드",i1);
-		cash = new JRadioButton("현금결제",i2);
+		JRadioButton card = new JRadioButton("신용카드",i1);
+		JRadioButton cash = new JRadioButton("현금결제",i2);
 		bg.add(card);
 		bg.add(cash);
 		
@@ -123,26 +110,6 @@ class payUI extends JFrame implements ActionListener,MouseListener{
 		info.setBounds(7,460,icon5.getIconWidth(),icon5.getIconHeight());
 		jta = new JTextArea(5,20);
 		jta.setBounds(119, 460, icon5.getIconWidth(),icon5.getIconHeight());
-		
-		//확인창 이름
-		receiveName = new JLabel();
-		receiveName.setBounds(119, 470, 200,20);
-		receiveName.setFont(new Font("맑은 돋움", Font.BOLD, 16));
-		
-		//확인창 넘버
-		receiveNum = new JLabel();
-		receiveNum.setBounds(119, 495, 200, 20);
-		receiveNum.setFont(new Font("맑은 돋움", Font.BOLD, 16));
-		
-		//확인창 주소
-		receiveAddress = new JLabel();
-		receiveAddress.setBounds(119, 520, 200, 20);
-		receiveAddress.setFont(new Font("맑은 돋움", Font.BOLD, 16));
-		
-		//결제방법
-		howPay = new JLabel();
-		howPay.setBounds(119, 545, 200, 20);
-		howPay.setFont(new Font("맑은 돋움", Font.BOLD, 16));
 		
 		// 확인창 이벤트 
 		name_t.addActionListener(this); 
@@ -157,21 +124,17 @@ class payUI extends JFrame implements ActionListener,MouseListener{
 //		button.setBorderPainted(false);
 		
 		button1 = new JButton(before);
-		button1.setBounds(0,620,before.getIconWidth(),before.getIconHeight());
+		button1.setBounds(0,630,before.getIconWidth(),before.getIconHeight());
 		button1.setBorderPainted(false);
 		button1.addMouseListener(this);
 		
 		button2 = new JButton(next);
-		button2.setBounds(200,620,next.getIconWidth(),next.getIconHeight());
+		button2.setBounds(200,630,next.getIconWidth(),next.getIconHeight());
 		button2.setBorderPainted(false);
 		button2.addMouseListener(this);
 		
 		
 		// 프레임 장착
-		container.add(receiveName);
-		container.add(receiveNum);
-		container.add(receiveAddress);
-		container.add(howPay);
 		container.add(paylogo);
 		container.add(title1);
 		container.add(title2);
@@ -202,23 +165,12 @@ class payUI extends JFrame implements ActionListener,MouseListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		if(e.getSource() == name_t) {
-//			number_t.requestFocus();
-//		}else if(e.getSource() == number_t) {
-//			address_t.requestFocus();
-//		}
-//		jta.append(e.getActionCommand()+"\n");	
-		if(e.getSource().equals(card) || e.getSource().equals(cash)) {
-			receiveName.setText(name_t.getText());
-			receiveNum.setText(number_t.getText());
-			receiveAddress.setText(address_t.getText());
-			if(e.getSource() == card) {
-				howPay.setText("신용 카드");
-			}else {
-				howPay.setText("현금 결제");
-			}
-			
+		if(e.getSource() == name_t) {
+			number_t.requestFocus();
+		}else if(e.getSource() == number_t) {
+			address_t.requestFocus();
 		}
+		jta.append(e.getActionCommand()+"\n");	
 	}
 
 	@Override
@@ -231,9 +183,6 @@ class payUI extends JFrame implements ActionListener,MouseListener{
 		else if (e.getSource() == button2) {
 			this.dispose();
 			new LastUI();
-//			String addSideName = ;
-			bc.PayForBasket(ppc.PickPizzaInfo().getName()
-					, receiveAddress.getText(), resultPrice);
 		}
 		
 	}

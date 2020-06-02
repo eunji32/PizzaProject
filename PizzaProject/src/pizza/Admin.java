@@ -45,19 +45,11 @@ public class Admin {
 			String adress = e.getAddress();
 			String delCheck = e.getdelCheck();
 			
-			
 			Object[] result = {time, pizza, adress,delCheck};
 			data = result;
 		}
 		return data;
 	}
-	
-	
-//	public static int readIndex(AdminDAO info, int indexi) {
-//		int index = info.selectMax();
-//		
-//		return index;
-//	}
 	
 	
 	public static String readTime(AdminDAO info, int indexi) {
@@ -109,6 +101,5 @@ public class Admin {
 		}
 		return Price;
 	}
-	
 	
 }
